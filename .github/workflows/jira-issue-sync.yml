@@ -66,3 +66,4 @@ jobs:
         run: |
           cd poc/action
           python3 sync_to_jira.py
+
