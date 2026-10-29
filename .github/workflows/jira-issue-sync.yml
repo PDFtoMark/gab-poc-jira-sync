@@ -47,7 +47,8 @@ jobs:
       - name: Show that a repository secret is available in this context
         env:
           POC_SECRET: ${{ secrets.POC_SECRET }}
-        run: echo "POC_SECRET is available: length=${#POC_SECRET}"
+        run: |
+          if [ -n "$POC_SECRET" ]; then echo "POC_SECRET is present in this workflow_run context"; else echo "no secret"; fi
       - name: Run vendored sync-jira-actions (Jira client stubbed)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
